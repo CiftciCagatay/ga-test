@@ -8,7 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
+      - name: fail_fast
         continue-on-error: true
         run: |
           exit 1
+
+      - name: Check on failures
+        if: steps.fail_fast.outcome != 'success' || steps.fail_fast.outcome != 'success'
+        run: exit 1
