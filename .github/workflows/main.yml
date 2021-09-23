@@ -1,0 +1,13 @@
+name: Test Exit Code
+on:
+  push:
+    master:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Check out repository
+        run: |
+          exit 1
